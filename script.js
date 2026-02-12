@@ -15,7 +15,35 @@ fetch('foods.json')
     .then(data => {
         foods = data;
         populateDropdown();
+        loadData();
     });
+
+function saveData() {
+    const data = {
+        addedItems,
+        totals,
+        calorieGoal
+    };
+
+    localStorage.setItem("kCALculatorData", JSON.stringify(data));
+}
+
+function loadData() {
+    const saved = localStorage.getItem("kCALculatorData");
+
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+
+    addedItems = data.addedItems || [];
+    totals = data.totals || totals;
+    calorieGoal = data.calorieGoal || 0;
+
+    document.getElementById("calorieGoal").value = calorieGoal;
+
+    updateUI();
+}
+
 
 function populateDropdown() {
     const select = document.getElementById("foodSelect");
@@ -60,6 +88,8 @@ function addSelectedFood() {
 
     updateUI();
     quantityInput.value = "";
+    saveData();
+
 }
 
 function updateUI() {
@@ -103,6 +133,8 @@ function removeItem(index) {
     addedItems.splice(index, 1);
 
     updateUI();
+    saveData();
+
 }
 
 
@@ -142,7 +174,11 @@ function setGoal() {
 
     calorieGoal = parseInt(goalInput);
     updateProgress();
+    saveData();
+
 }
+
+
 
 function updateProgress() {
     if (calorieGoal === 0) return;
