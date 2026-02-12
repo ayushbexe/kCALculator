@@ -145,7 +145,9 @@ function downloadReceipt() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    const today = new Date().toLocaleDateString();
+    const now = new Date();
+    const today = now.toLocaleString();
+
     let y = 20;
 
     doc.setFont("courier", "normal");
@@ -235,7 +237,18 @@ function downloadReceipt() {
     doc.setFontSize(9);
     doc.text("Thank you for tracking with kCALculator.", 105, y, { align: "center" });
 
-    doc.save("kCALculator_Receipt.pdf");
+    const now = new Date();
+
+const year = now.getFullYear();
+const month = String(now.getMonth() + 1).padStart(2, '0');
+const day = String(now.getDate()).padStart(2, '0');
+const hours = String(now.getHours()).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+
+const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
+
+doc.save(fileName);
+
 }
 
 
