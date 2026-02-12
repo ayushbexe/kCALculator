@@ -8,6 +8,14 @@
     "fat": 2
   },
   {
+    "name": "Rice (1 bowl cooked)",
+    "unit": "1 bowl",
+    "calories": 200,
+    "protein": 4,
+    "carbs": 45,
+    "fat": 1
+  },
+  {
     "name": "Egg",
     "unit": "1 piece",
     "calories": 70,
@@ -22,5 +30,45 @@
     "protein": 23,
     "carbs": 0,
     "fat": 4
+  },
+  {
+    "name": "Banana",
+    "unit": "1 piece",
+    "calories": 105,
+    "protein": 1,
+    "carbs": 27,
+    "fat": 0
+  },
+  {
+    "name": "Peanut Butter (1 tbsp)",
+    "unit": "1 tbsp",
+    "calories": 95,
+    "protein": 4,
+    "carbs": 3,
+    "fat": 8
+  },
+  {
+    "name": "White Bread (1 slice)",
+    "unit": "1 slice",
+    "calories": 70,
+    "protein": 2,
+    "carbs": 13,
+    "fat": 1
+  },
+  {
+    "name": "Oats (40g)",
+    "unit": "40g",
+    "calories": 150,
+    "protein": 5,
+    "carbs": 27,
+    "fat": 3
+  },
+  {
+    "name": "Whey Protein (1 scoop)",
+    "unit": "1 scoop",
+    "calories": 110,
+    "protein": 12,
+    "carbs": 3,
+    "fat": 1
   }
 ]
