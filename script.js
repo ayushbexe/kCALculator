@@ -5,6 +5,7 @@ let totals = {
     carbs: 0,
     fat: 0
 };
+let calorieGoal = 0;
 
 let addedItems = [];
 
@@ -86,6 +87,9 @@ function updateUI() {
     document.getElementById("totalProtein").textContent = totals.protein;
     document.getElementById("totalCarbs").textContent = totals.carbs;
     document.getElementById("totalFat").textContent = totals.fat;
+
+    updateProgress();
+
 }
 
 function removeItem(index) {
@@ -126,4 +130,26 @@ Fat: ${totals.fat}g`;
     link.href = URL.createObjectURL(blob);
     link.download = `kCALculator_${today}.txt`;
     link.click();
+}
+
+function setGoal() {
+    const goalInput = document.getElementById("calorieGoal").value;
+
+    if (!goalInput || goalInput <= 0) {
+        alert("Enter a valid calorie goal");
+        return;
+    }
+
+    calorieGoal = parseInt(goalInput);
+    updateProgress();
+}
+
+function updateProgress() {
+    if (calorieGoal === 0) return;
+
+    const percentage = Math.min((totals.calories / calorieGoal) * 100, 100);
+
+    document.getElementById("progressBar").style.width = percentage + "%";
+    document.getElementById("goalStatus").textContent =
+        percentage.toFixed(1) + "% of goal reached";
 }
