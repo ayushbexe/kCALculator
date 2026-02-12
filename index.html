@@ -27,6 +27,21 @@
             <ul id="addedFoods"></ul>
         </div>
 
+        <!-- Calorie Goal Section -->
+<div class="goal-section">
+    <h2>Daily Goal</h2>
+
+    <input type="number" id="calorieGoal" placeholder="Enter Calorie Goal (e.g. 3000)">
+    <button onclick="setGoal()">Set Goal</button>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <p id="goalStatus">0% of goal reached</p>
+</div>
+
+
         <!-- Totals Section -->
         <div class="totals">
             <h2>Totals</h2>
