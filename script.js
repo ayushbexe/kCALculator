@@ -105,7 +105,7 @@ function updateUI() {
             | P:${item.protein}g 
             C:${item.carbs}g 
             F:${item.fat}g
-            <button onclick="removeItem(${index})" style="margin-left:10px;background:#ff4444;color:white;border:none;padding:4px 6px;border-radius:4px;cursor:pointer;">
+            <button onclick="removeItem(${index})" style="margin-left:10px;background:none;color:white;border:none;padding:4px 6px;border-radius:4px;cursor:pointer;">
                 ❌
             </button>
         `;
