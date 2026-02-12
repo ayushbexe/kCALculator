@@ -41,7 +41,7 @@ select,
 input {
     background: #1e1e1e;
     color: #eee;
-    border: 1px solid #333;
+    border: 4px solid #333;
     padding: 6px 10px;
     font-size: 14px;
     height: 34px;
