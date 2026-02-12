@@ -219,6 +219,23 @@ function downloadReceipt() {
         doc.text("Fat:", 5, y);
         doc.text(totals.fat + " g", 75, y, { align: "right" });
 
+        y += 8;
+        doc.line(5, y, 75, y);
+        y += 6;
+
+        // Thank you message
+        doc.setFontSize(8);
+        doc.text("Thank you for tracking with kCALculator.", 40, y, { align: "center" });
+        y += 6;
+
+        // Signature
+        doc.text("by Ayush B", 40, y, { align: "center" });
+        y += 4;
+
+       // GitHub link
+       doc.text("Visit: github.com/ayushbexe", 40, y, { align: "center" });
+
+
         // Filename
         const year = now.getFullYear();
         const month = String(now.getMonth() + 1).padStart(2, '0');
