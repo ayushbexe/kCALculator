@@ -144,128 +144,81 @@ function removeItem(index) {
 function downloadReceipt() {
     const receiptNo = getNextReceiptNumber();
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({
-    orientation: "portrait",
-    unit: "mm",
-    format: [80, 50]  // 80mm width like POS printer
-    });
 
+    const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: [80, 200]
+    });
 
     const now = new Date();
     const today = now.toLocaleString();
 
-    let y = 5;
-    
-    doc.text("Receipt No: " + receiptNo, 5, y);
-    y += 8;
-
+    let y = 10;
 
     doc.setFont("courier", "normal");
 
-    // Title
-    doc.setFontSize(16);
+    // Centered title
+    doc.setFontSize(12);
     doc.text("kCALculator", 40, y, { align: "center" });
-    y += 8;
-
-    doc.setFontSize(10);
-    doc.text("Nutrition Tracking Receipt", 40, y, { align: "center" });
-    y += 10;
-
-    doc.text("Date: " + today, 5, y);
-    y += 8;
-
-    // Line
-    doc.line(5, y, 75, y);
-    y += 8;
-
-    // Table Header
-    doc.text("Item", 5, y);
-    doc.text("Qty", 55, y, { align: "right" });
-    doc.text("Calories", 75, y, { align: "right" });
     y += 6;
 
+    doc.setFontSize(8);
+    doc.text("Receipt No: " + receiptNo, 5, y);
+    y += 5;
+
+    doc.text("Date: " + today, 5, y);
+    y += 5;
+
     doc.line(5, y, 75, y);
-    y += 8;
+    y += 5;
+
+    // Header
+    doc.text("Item", 5, y);
+    doc.text("Qty", 55, y, { align: "right" });
+    doc.text("Cal", 75, y, { align: "right" });
+    y += 4;
+
+    doc.line(5, y, 75, y);
+    y += 5;
 
     // Items
     addedItems.forEach(item => {
-        doc.text(item.name.substring(0, 5), 5, y);
+        doc.text(item.name.substring(0, 12), 5, y);
         doc.text(String(item.quantity), 55, y, { align: "right" });
         doc.text(String(item.calories), 75, y, { align: "right" });
-        y += 8;
+        y += 5;
     });
 
-    y += 4;
     doc.line(5, y, 75, y);
-    y += 10;
+    y += 6;
 
-    // Totals Section
-    doc.setFontSize(12);
-    doc.text("TOTAL CALORIES", 5, y);
-    doc.text(String(totals.calories) + " kcal", 75, y, { align: "right" });
-    y += 10;
-
+    // Totals
     doc.setFontSize(10);
+    doc.text("TOTAL:", 5, y);
+    doc.text(totals.calories + " kcal", 75, y, { align: "right" });
+    y += 6;
+
     doc.text("Protein:", 5, y);
     doc.text(totals.protein + " g", 75, y, { align: "right" });
-    y += 6;
+    y += 5;
 
     doc.text("Carbs:", 5, y);
     doc.text(totals.carbs + " g", 75, y, { align: "right" });
-    y += 6;
+    y += 5;
 
     doc.text("Fat:", 5, y);
     doc.text(totals.fat + " g", 75, y, { align: "right" });
-    y += 10;
 
-    // Footer Line
-    doc.line(5, y, 75, y);
-    y += 8;
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
 
-    doc.setFontSize(9);
-    doc.text("Macro Split:", 5, y);
-    y += 6;
+    const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
 
-    const proteinCal = totals.protein * 4;
-    const carbCal = totals.carbs * 4;
-    const fatCal = totals.fat * 9;
-    const totalMacroCal = proteinCal + carbCal + fatCal;
-
-    if (totalMacroCal > 0) {
-        const p = ((proteinCal / totalMacroCal) * 100).toFixed(1);
-        const c = ((carbCal / totalMacroCal) * 100).toFixed(1);
-        const f = ((fatCal / totalMacroCal) * 100).toFixed(1);
-
-        doc.text(`Protein: ${p}%`, 5, y);
-        y += 5;
-        doc.text(`Carbs: ${c}%`, 5, y);
-        y += 5;
-        doc.text(`Fat: ${f}%`, 5, y);
-        y += 10;
-    }
-
-    doc.setFontSize(9);
-    doc.text("Thank you for tracking with kCALculator.", 40, y, { align: "center" });
-    const img = new Image();
-img.src = "logo.png";
-
-img.onload = function () {
-    doc.addImage(img, "PNG", 25, y, 30, 15);
-};
-
-
-   
-
-const year = now.getFullYear();
-const month = String(now.getMonth() + 1).padStart(2, '0');
-const day = String(now.getDate()).padStart(2, '0');
-const hours = String(now.getHours()).padStart(2, '0');
-const minutes = String(now.getMinutes()).padStart(2, '0');
-
-const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
-
-doc.save(fileName);
-
+    doc.save(fileName);
 }
 
 
@@ -278,18 +231,11 @@ function setGoal() {
     }
 
     calorieGoal = parseInt(goalInput);
-    if (calorieGoal > 0) {
-    const percent = ((totals.calories / calorieGoal) * 100).toFixed(1);
-    doc.text("Goal Status:", 20, y);
-    doc.text(percent + "% of " + calorieGoal + " kcal", 190, y, { align: "right" });
-    y += 8;
-}
-}
 
     updateProgress();
     saveData();
-
 }
+
 
 function updateProgress() {
     if (calorieGoal === 0) return;
