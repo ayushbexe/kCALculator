@@ -142,30 +142,55 @@ function removeItem(index) {
 
 
 function downloadReceipt() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
     const today = new Date().toLocaleDateString();
 
-    let content = `kCALculator Receipt\nDate: ${today}\n\n`;
+    let y = 20;
+
+    doc.setFont("courier", "normal");
+    doc.setFontSize(14);
+    doc.text("kCALculator Receipt", 20, y);
+    y += 10;
+
+    doc.setFontSize(10);
+    doc.text("Date: " + today, 20, y);
+    y += 10;
+
+    doc.text("----------------------------------------", 20, y);
+    y += 8;
+
+    doc.text("Item        Qty     Calories", 20, y);
+    y += 8;
+
+    doc.text("----------------------------------------", 20, y);
+    y += 8;
 
     addedItems.forEach(item => {
-        content += `${item.name} x${item.quantity}
-Calories: ${item.calories}
-Protein: ${item.protein}g
-Carbs: ${item.carbs}g
-Fat: ${item.fat}g\n\n`;
+        doc.text(
+            `${item.name.substring(0,10)}     ${item.quantity}        ${item.calories}`,
+            20,
+            y
+        );
+        y += 8;
     });
 
-    content += `TOTALS
-Calories: ${totals.calories}
-Protein: ${totals.protein}g
-Carbs: ${totals.carbs}g
-Fat: ${totals.fat}g`;
+    y += 5;
+    doc.text("----------------------------------------", 20, y);
+    y += 10;
 
-    const blob = new Blob([content], { type: "text/plain" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `kCALculator_${today}.txt`;
-    link.click();
+    doc.text(`Total Calories: ${totals.calories}`, 20, y);
+    y += 8;
+    doc.text(`Protein: ${totals.protein} g`, 20, y);
+    y += 8;
+    doc.text(`Carbs: ${totals.carbs} g`, 20, y);
+    y += 8;
+    doc.text(`Fat: ${totals.fat} g`, 20, y);
+
+    doc.save("kCALculator_Receipt.pdf");
 }
+
 
 function setGoal() {
     const goalInput = document.getElementById("calorieGoal").value;
