@@ -142,13 +142,23 @@ function removeItem(index) {
 
 
 function downloadReceipt() {
+    const receiptNo = getNextReceiptNumber();
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: [80, 200]  // 80mm width like POS printer
+    });
+
 
     const now = new Date();
     const today = now.toLocaleString();
 
     let y = 20;
+    
+    doc.text("Receipt No: " + receiptNo, 20, y);
+    y += 8;
+
 
     doc.setFont("courier", "normal");
 
@@ -171,7 +181,7 @@ function downloadReceipt() {
     // Table Header
     doc.text("Item", 20, y);
     doc.text("Qty", 120, y, { align: "right" });
-    doc.text("Calories", 190, y, { align: "right" });
+    doc.text("Calories", 70, y, { align: "right" });
     y += 6;
 
     doc.line(20, y, 190, y);
@@ -261,6 +271,13 @@ function setGoal() {
     }
 
     calorieGoal = parseInt(goalInput);
+    if (calorieGoal > 0) {
+    const percent = ((totals.calories / calorieGoal) * 100).toFixed(1);
+    doc.text("Goal Status:", 20, y);
+    doc.text(percent + "% of " + calorieGoal + " kcal", 190, y, { align: "right" });
+    y += 8;
+}
+
     updateProgress();
     saveData();
 
@@ -321,8 +338,19 @@ function updateMacroBreakdown() {
     const fatPercent = ((fatCalories / totalMacroCalories) * 100).toFixed(1);
 
     document.getElementById("macroDisplay").textContent =
-    `Protein: ${proteinPercent}% | Carbs: ${carbPercent}% | Fat: ${fatPercent}%`;
+    `Protein: ${proteinPercent}% | Carbs: ${carbPercent}% | Fat: ${fatPercent}%`;    
+}
 
+function getNextReceiptNumber() {
+    let receiptNumber = localStorage.getItem("receiptNumber");
 
-    
+    if (!receiptNumber) {
+        receiptNumber = 1;
+    } else {
+        receiptNumber = parseInt(receiptNumber) + 1;
+    }
+
+    localStorage.setItem("receiptNumber", receiptNumber);
+
+    return String(receiptNumber).padStart(4, "0");
 }
