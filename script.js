@@ -280,9 +280,10 @@ function setGoal() {
     calorieGoal = parseInt(goalInput);
     if (calorieGoal > 0) {
     const percent = ((totals.calories / calorieGoal) * 100).toFixed(1);
-    doc.text("Goal Status:", 5, y);
-    doc.text(percent + "% of " + calorieGoal + " kcal", 75, y, { align: "right" });
+    doc.text("Goal Status:", 20, y);
+    doc.text(percent + "% of " + calorieGoal + " kcal", 190, y, { align: "right" });
     y += 8;
+}
 }
 
     updateProgress();
