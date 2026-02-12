@@ -154,71 +154,82 @@ function downloadReceipt() {
     const now = new Date();
     const today = now.toLocaleString();
 
-    let y = 10;
+    let y = 25; // leave space for logo
 
-    doc.setFont("courier", "normal");
+    // --- ADD LOGO FIRST ---
+    const img = new Image();
+    img.src = "logo.png";
 
-    // Centered title
-    doc.setFontSize(12);
-    doc.text("kCALculator", 40, y, { align: "center" });
-    y += 6;
+    img.onload = function () {
 
-    doc.setFontSize(8);
-    doc.text("Receipt No: " + receiptNo, 5, y);
-    y += 5;
+        // Add logo at top center
+        doc.addImage(img, "PNG", 25, 5, 30, 12);
 
-    doc.text("Date: " + today, 5, y);
-    y += 5;
+        doc.setFont("courier", "normal");
 
-    doc.line(5, y, 75, y);
-    y += 5;
+        // Title
+        doc.setFontSize(12);
+        doc.text("kCALculator", 40, y, { align: "center" });
+        y += 6;
 
-    // Header
-    doc.text("Item", 5, y);
-    doc.text("Qty", 55, y, { align: "right" });
-    doc.text("Cal", 75, y, { align: "right" });
-    y += 4;
-
-    doc.line(5, y, 75, y);
-    y += 5;
-
-    // Items
-    addedItems.forEach(item => {
-        doc.text(item.name.substring(0, 12), 5, y);
-        doc.text(String(item.quantity), 55, y, { align: "right" });
-        doc.text(String(item.calories), 75, y, { align: "right" });
+        doc.setFontSize(8);
+        doc.text("Receipt No: " + receiptNo, 5, y);
         y += 5;
-    });
 
-    doc.line(5, y, 75, y);
-    y += 6;
+        doc.text("Date: " + today, 5, y);
+        y += 5;
 
-    // Totals
-    doc.setFontSize(10);
-    doc.text("TOTAL:", 5, y);
-    doc.text(totals.calories + " kcal", 75, y, { align: "right" });
-    y += 6;
+        doc.line(5, y, 75, y);
+        y += 5;
 
-    doc.text("Protein:", 5, y);
-    doc.text(totals.protein + " g", 75, y, { align: "right" });
-    y += 5;
+        // Header
+        doc.text("Item", 5, y);
+        doc.text("Qty", 55, y, { align: "right" });
+        doc.text("Cal", 75, y, { align: "right" });
+        y += 4;
 
-    doc.text("Carbs:", 5, y);
-    doc.text(totals.carbs + " g", 75, y, { align: "right" });
-    y += 5;
+        doc.line(5, y, 75, y);
+        y += 5;
 
-    doc.text("Fat:", 5, y);
-    doc.text(totals.fat + " g", 75, y, { align: "right" });
+        // Items
+        addedItems.forEach(item => {
+            doc.text(item.name.substring(0, 12), 5, y);
+            doc.text(String(item.quantity), 55, y, { align: "right" });
+            doc.text(String(item.calories), 75, y, { align: "right" });
+            y += 5;
+        });
 
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
+        doc.line(5, y, 75, y);
+        y += 6;
 
-    const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
+        // Totals
+        doc.setFontSize(10);
+        doc.text("TOTAL:", 5, y);
+        doc.text(totals.calories + " kcal", 75, y, { align: "right" });
+        y += 6;
 
-    doc.save(fileName);
+        doc.text("Protein:", 5, y);
+        doc.text(totals.protein + " g", 75, y, { align: "right" });
+        y += 5;
+
+        doc.text("Carbs:", 5, y);
+        doc.text(totals.carbs + " g", 75, y, { align: "right" });
+        y += 5;
+
+        doc.text("Fat:", 5, y);
+        doc.text(totals.fat + " g", 75, y, { align: "right" });
+
+        // Filename
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
+
+        doc.save(fileName);
+    };
 }
 
 
