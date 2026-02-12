@@ -147,16 +147,16 @@ function downloadReceipt() {
     const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",
-    format: [80, 200]  // 80mm width like POS printer
+    format: [80, 50]  // 80mm width like POS printer
     });
 
 
     const now = new Date();
     const today = now.toLocaleString();
 
-    let y = 20;
+    let y = 5;
     
-    doc.text("Receipt No: " + receiptNo, 20, y);
+    doc.text("Receipt No: " + receiptNo, 5, y);
     y += 8;
 
 
@@ -164,66 +164,66 @@ function downloadReceipt() {
 
     // Title
     doc.setFontSize(16);
-    doc.text("kCALculator", 105, y, { align: "center" });
+    doc.text("kCALculator", 40, y, { align: "center" });
     y += 8;
 
     doc.setFontSize(10);
-    doc.text("Nutrition Tracking Receipt", 105, y, { align: "center" });
+    doc.text("Nutrition Tracking Receipt", 40, y, { align: "center" });
     y += 10;
 
-    doc.text("Date: " + today, 20, y);
+    doc.text("Date: " + today, 5, y);
     y += 8;
 
     // Line
-    doc.line(20, y, 190, y);
+    doc.line(5, y, 75, y);
     y += 8;
 
     // Table Header
-    doc.text("Item", 20, y);
-    doc.text("Qty", 120, y, { align: "right" });
-    doc.text("Calories", 190, y, { align: "right" });
+    doc.text("Item", 5, y);
+    doc.text("Qty", 55, y, { align: "right" });
+    doc.text("Calories", 75, y, { align: "right" });
     y += 6;
 
-    doc.line(20, y, 190, y);
+    doc.line(5, y, 75, y);
     y += 8;
 
     // Items
     addedItems.forEach(item => {
-        doc.text(item.name.substring(0, 20), 20, y);
-        doc.text(String(item.quantity), 120, y, { align: "right" });
-        doc.text(String(item.calories), 190, y, { align: "right" });
+        doc.text(item.name.substring(0, 5), 5, y);
+        doc.text(String(item.quantity), 55, y, { align: "right" });
+        doc.text(String(item.calories), 75, y, { align: "right" });
         y += 8;
     });
 
     y += 4;
-    doc.line(20, y, 190, y);
+    doc.line(5, y, 75, y);
     y += 10;
 
     // Totals Section
     doc.setFontSize(12);
-    doc.text("TOTAL CALORIES", 20, y);
-    doc.text(String(totals.calories) + " kcal", 190, y, { align: "right" });
+    doc.text("TOTAL CALORIES", 5, y);
+    doc.text(String(totals.calories) + " kcal", 75, y, { align: "right" });
     y += 10;
 
     doc.setFontSize(10);
-    doc.text("Protein:", 20, y);
-    doc.text(totals.protein + " g", 190, y, { align: "right" });
+    doc.text("Protein:", 5, y);
+    doc.text(totals.protein + " g", 75, y, { align: "right" });
     y += 6;
 
-    doc.text("Carbs:", 20, y);
-    doc.text(totals.carbs + " g", 190, y, { align: "right" });
+    doc.text("Carbs:", 5, y);
+    doc.text(totals.carbs + " g", 75, y, { align: "right" });
     y += 6;
 
-    doc.text("Fat:", 20, y);
-    doc.text(totals.fat + " g", 190, y, { align: "right" });
+    doc.text("Fat:", 5, y);
+    doc.text(totals.fat + " g", 75, y, { align: "right" });
     y += 10;
 
     // Footer Line
-    doc.line(20, y, 190, y);
+    doc.line(5, y, 75, y);
     y += 8;
 
     doc.setFontSize(9);
-    doc.text("Macro Split:", 20, y);
+    doc.text("Macro Split:", 5, y);
     y += 6;
 
     const proteinCal = totals.protein * 4;
@@ -236,16 +236,16 @@ function downloadReceipt() {
         const c = ((carbCal / totalMacroCal) * 100).toFixed(1);
         const f = ((fatCal / totalMacroCal) * 100).toFixed(1);
 
-        doc.text(`Protein: ${p}%`, 20, y);
+        doc.text(`Protein: ${p}%`, 5, y);
         y += 5;
-        doc.text(`Carbs: ${c}%`, 20, y);
+        doc.text(`Carbs: ${c}%`, 5, y);
         y += 5;
-        doc.text(`Fat: ${f}%`, 20, y);
+        doc.text(`Fat: ${f}%`, 5, y);
         y += 10;
     }
 
     doc.setFontSize(9);
-    doc.text("Thank you for tracking with kCALculator.", 105, y, { align: "center" });
+    doc.text("Thank you for tracking with kCALculator.", 40, y, { align: "center" });
     const img = new Image();
 img.src = "logo.png";
 
@@ -280,8 +280,8 @@ function setGoal() {
     calorieGoal = parseInt(goalInput);
     if (calorieGoal > 0) {
     const percent = ((totals.calories / calorieGoal) * 100).toFixed(1);
-    doc.text("Goal Status:", 20, y);
-    doc.text(percent + "% of " + calorieGoal + " kcal", 190, y, { align: "right" });
+    doc.text("Goal Status:", 5, y);
+    doc.text(percent + "% of " + calorieGoal + " kcal", 75, y, { align: "right" });
     y += 8;
 }
 
