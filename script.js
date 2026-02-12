@@ -237,7 +237,7 @@ function downloadReceipt() {
     doc.setFontSize(9);
     doc.text("Thank you for tracking with kCALculator.", 105, y, { align: "center" });
 
-    const now = new Date();
+   
 
 const year = now.getFullYear();
 const month = String(now.getMonth() + 1).padStart(2, '0');
