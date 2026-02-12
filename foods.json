@@ -9,7 +9,7 @@
   },
   {
     "name": "Rice",
-    "unit": "1 bowl (1 bowl, cooked)",
+    "unit": "1 bowl cooked",
     "calories": 200,
     "protein": 4,
     "carbs": 45,
@@ -64,7 +64,7 @@
     "fat": 3
   },
   {
-    "name": "Whey Protein (1 scoop)",
+    "name": "Whey Protein",
     "unit": "1 scoop",
     "calories": 110,
     "protein": 12,
