@@ -65,13 +65,20 @@ function updateUI() {
     const list = document.getElementById("addedFoods");
     list.innerHTML = "";
 
-    addedItems.forEach(item => {
+    addedItems.forEach((item, index) => {
         const li = document.createElement("li");
-        li.textContent = `${item.name} x${item.quantity} 
-        | ${item.calories} kcal 
-        | P:${item.protein}g 
-        C:${item.carbs}g 
-        F:${item.fat}g`;
+
+        li.innerHTML = `
+            ${item.name} x${item.quantity} 
+            | ${item.calories} kcal 
+            | P:${item.protein}g 
+            C:${item.carbs}g 
+            F:${item.fat}g
+            <button onclick="removeItem(${index})" style="margin-left:10px;background:#ff4444;color:white;border:none;padding:4px 6px;border-radius:4px;cursor:pointer;">
+                ❌
+            </button>
+        `;
+
         list.appendChild(li);
     });
 
@@ -80,6 +87,7 @@ function updateUI() {
     document.getElementById("totalCarbs").textContent = totals.carbs;
     document.getElementById("totalFat").textContent = totals.fat;
 }
+
 
 function downloadReceipt() {
     const today = new Date().toLocaleDateString();
