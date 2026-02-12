@@ -178,8 +178,6 @@ function setGoal() {
 
 }
 
-
-
 function updateProgress() {
     if (calorieGoal === 0) return;
 
@@ -188,4 +186,35 @@ function updateProgress() {
     document.getElementById("progressBar").style.width = percentage + "%";
     document.getElementById("goalStatus").textContent =
         percentage.toFixed(1) + "% of goal reached";
+}
+
+function addCustomFood() {
+    const name = document.getElementById("customName").value;
+    const calories = parseFloat(document.getElementById("customCalories").value);
+    const protein = parseFloat(document.getElementById("customProtein").value);
+    const carbs = parseFloat(document.getElementById("customCarbs").value);
+    const fat = parseFloat(document.getElementById("customFat").value);
+
+    if (!name || !calories) {
+        alert("Enter valid food details");
+        return;
+    }
+
+    const newFood = {
+        name: name,
+        unit: "1 unit",
+        calories: calories,
+        protein: protein || 0,
+        carbs: carbs || 0,
+        fat: fat || 0
+    };
+
+    foods.push(newFood);
+    populateDropdown();
+
+    document.getElementById("customName").value = "";
+    document.getElementById("customCalories").value = "";
+    document.getElementById("customProtein").value = "";
+    document.getElementById("customCarbs").value = "";
+    document.getElementById("customFat").value = "";
 }
