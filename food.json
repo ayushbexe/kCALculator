@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Roti",
+    "unit": "1 piece",
+    "calories": 100,
+    "protein": 3,
+    "carbs": 20,
+    "fat": 2
+  },
+  {
+    "name": "Egg",
+    "unit": "1 piece",
+    "calories": 70,
+    "protein": 6,
+    "carbs": 1,
+    "fat": 5
+  },
+  {
+    "name": "Chicken Breast (100g)",
+    "unit": "100g",
+    "calories": 165,
+    "protein": 23,
+    "carbs": 0,
+    "fat": 4
+  }
+]
