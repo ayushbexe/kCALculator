@@ -88,6 +88,19 @@ function updateUI() {
     document.getElementById("totalFat").textContent = totals.fat;
 }
 
+function removeItem(index) {
+    const item = addedItems[index];
+
+    totals.calories -= item.calories;
+    totals.protein -= item.protein;
+    totals.carbs -= item.carbs;
+    totals.fat -= item.fat;
+
+    addedItems.splice(index, 1);
+
+    updateUI();
+}
+
 
 function downloadReceipt() {
     const today = new Date().toLocaleDateString();
