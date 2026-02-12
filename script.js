@@ -120,6 +120,9 @@ function updateUI() {
 
     updateProgress();
 
+    updateMacroBreakdown();
+
+
 }
 
 function removeItem(index) {
@@ -217,4 +220,24 @@ function addCustomFood() {
     document.getElementById("customProtein").value = "";
     document.getElementById("customCarbs").value = "";
     document.getElementById("customFat").value = "";
+}
+
+function updateMacroBreakdown() {
+    const proteinCalories = totals.protein * 4;
+    const carbCalories = totals.carbs * 4;
+    const fatCalories = totals.fat * 9;
+
+    const totalMacroCalories = proteinCalories + carbCalories + fatCalories;
+
+    if (totalMacroCalories === 0) return;
+
+    const proteinPercent = ((proteinCalories / totalMacroCalories) * 100).toFixed(1);
+    const carbPercent = ((carbCalories / totalMacroCalories) * 100).toFixed(1);
+    const fatPercent = ((fatCalories / totalMacroCalories) * 100).toFixed(1);
+
+    document.getElementById("macroDisplay").textContent =
+    `Protein: ${proteinPercent}% | Carbs: ${carbPercent}% | Fat: ${fatPercent}%`;
+
+
+    
 }
