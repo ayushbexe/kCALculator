@@ -246,6 +246,13 @@ function downloadReceipt() {
 
     doc.setFontSize(9);
     doc.text("Thank you for tracking with kCALculator.", 105, y, { align: "center" });
+    const img = new Image();
+img.src = "logo.png";
+
+img.onload = function () {
+    doc.addImage(img, "PNG", 25, y, 30, 15);
+};
+
 
    
 
