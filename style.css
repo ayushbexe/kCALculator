@@ -37,14 +37,19 @@ h2 {
     margin-bottom: 20px;
 }
 
-select, input {
+select,
+input {
+    background: #222;
+    color: #eee;
+    border: 1px solid #333;
     padding: 6px 10px;
     font-size: 14px;
     height: 34px;
     border-radius: 6px;
-    border: none;
     outline: none;
+    transition: 0.2s ease;
 }
+
 
 button {
     padding: 6px 12px;
