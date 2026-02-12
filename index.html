@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kCALculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>kCALculator</h1>
+
+        <!-- Food Selection Section -->
+        <div class="food-entry">
+            <select id="foodSelect">
+                <option value="">-- Select Food --</option>
+            </select>
+
+            <input type="number" id="quantityInput" placeholder="Quantity" min="1">
+
+            <button onclick="addSelectedFood()">Add</button>
+        </div>
+
+        <!-- Added Items List -->
+        <div class="food-list">
+            <h2>Today's Items</h2>
+            <ul id="addedFoods"></ul>
+        </div>
+
+        <!-- Totals Section -->
+        <div class="totals">
+            <h2>Totals</h2>
+            <p>Calories: <span id="totalCalories">0</span> kcal</p>
+            <p>Protein: <span id="totalProtein">0</span> g</p>
+            <p>Carbs: <span id="totalCarbs">0</span> g</p>
+            <p>Fat: <span id="totalFat">0</span> g</p>
+        </div>
+
+        <!-- Receipt Button -->
+        <div class="receipt">
+            <button onclick="downloadReceipt()">Download Receipt</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
