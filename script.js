@@ -175,7 +175,7 @@ function downloadReceipt() {
     y += 8;
 
     // Line
-    doc.line(20, y, 190, y);
+    doc.line(20, y, 70, y);
     y += 8;
 
     // Table Header
@@ -184,42 +184,42 @@ function downloadReceipt() {
     doc.text("Calories", 70, y, { align: "right" });
     y += 6;
 
-    doc.line(20, y, 190, y);
+    doc.line(20, y, 70, y);
     y += 8;
 
     // Items
     addedItems.forEach(item => {
         doc.text(item.name.substring(0, 20), 20, y);
         doc.text(String(item.quantity), 120, y, { align: "right" });
-        doc.text(String(item.calories), 190, y, { align: "right" });
+        doc.text(String(item.calories), 70, y, { align: "right" });
         y += 8;
     });
 
     y += 4;
-    doc.line(20, y, 190, y);
+    doc.line(20, y, 70, y);
     y += 10;
 
     // Totals Section
     doc.setFontSize(12);
     doc.text("TOTAL CALORIES", 20, y);
-    doc.text(String(totals.calories) + " kcal", 190, y, { align: "right" });
+    doc.text(String(totals.calories) + " kcal", 70, y, { align: "right" });
     y += 10;
 
     doc.setFontSize(10);
     doc.text("Protein:", 20, y);
-    doc.text(totals.protein + " g", 190, y, { align: "right" });
+    doc.text(totals.protein + " g", 70, y, { align: "right" });
     y += 6;
 
     doc.text("Carbs:", 20, y);
-    doc.text(totals.carbs + " g", 190, y, { align: "right" });
+    doc.text(totals.carbs + " g", 70, y, { align: "right" });
     y += 6;
 
     doc.text("Fat:", 20, y);
-    doc.text(totals.fat + " g", 190, y, { align: "right" });
+    doc.text(totals.fat + " g", 70, y, { align: "right" });
     y += 10;
 
     // Footer Line
-    doc.line(20, y, 190, y);
+    doc.line(20, y, 70, y);
     y += 8;
 
     doc.setFontSize(9);
@@ -281,7 +281,7 @@ function setGoal() {
     if (calorieGoal > 0) {
     const percent = ((totals.calories / calorieGoal) * 100).toFixed(1);
     doc.text("Goal Status:", 20, y);
-    doc.text(percent + "% of " + calorieGoal + " kcal", 190, y, { align: "right" });
+    doc.text(percent + "% of " + calorieGoal + " kcal", 70, y, { align: "right" });
     y += 8;
 }
 
