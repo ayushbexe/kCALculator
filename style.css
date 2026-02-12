@@ -39,7 +39,7 @@ h2 {
 
 select,
 input {
-    background: #222;
+    background: #1e1e1e;
     color: #eee;
     border: 1px solid #333;
     padding: 6px 10px;
@@ -49,6 +49,17 @@ input {
     outline: none;
     transition: 0.2s ease;
 }
+
+select:focus,
+input:focus {
+    border-color: #00ff88;
+    box-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
+}
+
+input::placeholder {
+    color: #777;
+}
+
 
 
 button {
