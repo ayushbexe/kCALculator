@@ -229,6 +229,7 @@ function downloadReceipt() {
         y += 6;
 
         // Signature
+        doc.setFont("courier", "bold");
         doc.text("by Ayush B", 40, y, { align: "center" });
         y += 4;
 
