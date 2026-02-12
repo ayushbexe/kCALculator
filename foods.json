@@ -4,12 +4,12 @@
     "unit": "1 piece",
     "calories": 100,
     "protein": 3,
-    "carbs": 20,
+    "carbs": 18,
     "fat": 2
   },
   {
-    "name": "Rice (1 bowl cooked)",
-    "unit": "1 bowl",
+    "name": "Rice",
+    "unit": "1 bowl (1 bowl, cooked)",
     "calories": 200,
     "protein": 4,
     "carbs": 45,
@@ -17,16 +17,16 @@
   },
   {
     "name": "Egg",
-    "unit": "1 piece",
-    "calories": 70,
-    "protein": 6,
+    "unit": "1 medium",
+    "calories": 62,
+    "protein": 4,
     "carbs": 1,
     "fat": 5
   },
   {
-    "name": "Chicken Breast (100g)",
+    "name": "Chicken Breast",
     "unit": "100g",
-    "calories": 165,
+    "calories": 160,
     "protein": 23,
     "carbs": 0,
     "fat": 4
@@ -40,23 +40,23 @@
     "fat": 0
   },
   {
-    "name": "Peanut Butter (1 tbsp)",
+    "name": "Peanut Butter",
     "unit": "1 tbsp",
-    "calories": 95,
+    "calories": 94,
     "protein": 4,
     "carbs": 3,
     "fat": 8
   },
   {
-    "name": "White Bread (1 slice)",
+    "name": "White Bread",
     "unit": "1 slice",
-    "calories": 70,
+    "calories": 67,
     "protein": 2,
     "carbs": 13,
     "fat": 1
   },
   {
-    "name": "Oats (40g)",
+    "name": "Oats",
     "unit": "40g",
     "calories": 150,
     "protein": 5,
