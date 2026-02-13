@@ -103,19 +103,21 @@ function updateUI() {
 li.style.justifyContent = "space-between";
 li.style.alignItems = "center";
 
+li.className = "food-item";
+
 li.innerHTML = `
-    <span>
+    <span class="food-text">
         ${item.name} x${item.quantity} 
         | ${item.calories} kcal 
         | P:${item.protein}g 
         C:${item.carbs}g 
         F:${item.fat}g
     </span>
-    <button onclick="removeItem(${index})"
-        style="background:none;color:#8b0000;border:none;font-size:16px;cursor:pointer;">
+    <button class="remove-btn" onclick="removeItem(${index})">
         ❌
     </button>
 `;
+
 
 
         list.appendChild(li);
