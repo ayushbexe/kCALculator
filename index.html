@@ -14,11 +14,13 @@
 
         <!-- Food Selection Section -->
         <div class="food-entry">
-            <select id="foodSelect">
+            <select id="foodSelect" onchange="updateUnitLabel()">
                 <option value="">-- Select Food --</option>
             </select>
+            <input type="number" id="quantityInput" step="0.01" min="0" placeholder="Enter amount">
 
-            <input type="number" id="quantityInput" step="0.01" min="0">
+<div id="unitLabel" style="font-size:12px; opacity:0.7; margin-top:4px;"></div>
+
 
             <button onclick="addSelectedFood()">Add</button>
         </div>
