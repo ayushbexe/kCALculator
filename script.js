@@ -99,16 +99,24 @@ function updateUI() {
     addedItems.forEach((item, index) => {
         const li = document.createElement("li");
 
-        li.innerHTML = `
-            ${item.name} x${item.quantity} 
-            | ${item.calories} kcal 
-            | P:${item.protein}g 
-            C:${item.carbs}g 
-            F:${item.fat}g
-            <button onclick="removeItem(${index})" style="margin-left:10px;background:none;color:white;border:none;padding:4px 6px;border-radius:4px;cursor:pointer;">
-                ❎
-            </button>
-        `;
+        li.style.display = "flex";
+li.style.justifyContent = "space-between";
+li.style.alignItems = "center";
+
+li.innerHTML = `
+    <span>
+        ${item.name} x${item.quantity} 
+        | ${item.calories} kcal 
+        | P:${item.protein}g 
+        C:${item.carbs}g 
+        F:${item.fat}g
+    </span>
+    <button onclick="removeItem(${index})"
+        style="background:none;color:#8b0000;border:none;font-size:16px;cursor:pointer;">
+        ❌
+    </button>
+`;
+
 
         list.appendChild(li);
     });
