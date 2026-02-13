@@ -140,6 +140,25 @@ function removeItem(index) {
 
 }
 
+function sendToGoogleSheet() {
+    fetch("https://script.google.com/macros/s/AKfycbzTUm-8G20fzNtZD87Z55_85m69mSRfMo62EjNZ_Sal_rLXA0dmGx11lNyl_S5J5Fst/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            calories: totals.calories,
+            protein: totals.protein,
+            carbs: totals.carbs,
+            fat: totals.fat,
+            goal: calorieGoal
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(data => console.log("Sheet Updated:", data))
+    .catch(err => console.error("Error:", err));
+}
+
 
 function downloadReceipt() {
     const receiptNo = getNextReceiptNumber();
@@ -246,6 +265,7 @@ function downloadReceipt() {
 
         const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
 
+        sendToGoogleSheet();
         doc.save(fileName);
     };
 }
