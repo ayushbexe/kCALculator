@@ -123,10 +123,10 @@ li.innerHTML = `
         list.appendChild(li);
     });
 
-    document.getElementById("totalCalories").textContent = totals.calories;
-    document.getElementById("totalProtein").textContent = totals.protein;
-    document.getElementById("totalCarbs").textContent = totals.carbs;
-    document.getElementById("totalFat").textContent = totals.fat;
+    document.getElementById("totalCalories").textContent = totals.calories.toFixed(2);
+document.getElementById("totalProtein").textContent = totals.protein.toFixed(2);
+document.getElementById("totalCarbs").textContent = totals.carbs.toFixed(2);
+document.getElementById("totalFat").textContent = totals.fat.toFixed(2);
 
     updateProgress();
 
