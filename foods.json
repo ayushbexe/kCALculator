@@ -9,11 +9,11 @@
   },
   {
     "name": "Rice",
-    "unit": "100g Cooked",
-    "calories": 130,
-    "protein": 2,
-    "carbs": 30,
-    "fat": 1
+    "unit": "1g Cooked",
+    "calories": 1.3,
+    "protein": 0.02,
+    "carbs": 0.3,
+    "fat": 0.01
   },
   {
     "name": "Egg",
@@ -25,11 +25,11 @@
   },
   {
     "name": "Chicken Breast",
-    "unit": "100g",
-    "calories": 160,
-    "protein": 23,
+    "unit": "1g",
+    "calories": 1.6,
+    "protein": 0.23,
     "carbs": 0,
-    "fat": 4
+    "fat": 0.04
   },
   {
     "name": "Banana",
@@ -57,11 +57,11 @@
   },
   {
     "name": "Oats",
-    "unit": "20g",
-    "calories": 72,
-    "protein": 2.5,
-    "carbs": 13,
-    "fat": 1.5
+    "unit": "1g",
+    "calories": 3.6,
+    "protein": 0.125,
+    "carbs": 0.65,
+    "fat": 0.075
   },
   {
     "name": "Whey Protein",
@@ -71,38 +71,36 @@
     "carbs": 3,
     "fat": 1
   },
-{
+  {
     "name": "Nescafé Choco Latte Drink",
-    "unit": "200ml",
-    "calories": 106,
-    "protein": 4,
-    "carbs": 15,
-    "fat": 3
+    "unit": "1ml",
+    "calories": 0.53,
+    "protein": 0.02,
+    "carbs": 0.075,
+    "fat": 0.015
   },
   {
-  "name": "Arhar Dal",
-  "unit": "100g Cooked",
-  "calories": 120,
-  "protein": 6,
-  "carbs": 20,
-  "fat": 0.5
-},
+    "name": "Arhar Dal",
+    "unit": "1g Cooked",
+    "calories": 1.2,
+    "protein": 0.06,
+    "carbs": 0.2,
+    "fat": 0.005
+  },
   {
-  "name": "Boiled Potato",
-  "unit": "50g",
-  "calories": 44,
-  "protein": 1,
-  "carbs": 10,
-  "fat": 0
-},
+    "name": "Boiled Potato",
+    "unit": "1g",
+    "calories": 0.88,
+    "protein": 0.02,
+    "carbs": 0.2,
+    "fat": 0
+  },
   {
-  "name": "Amul Kool Café",
-  "unit": "200ml",
-  "calories": 200,
-  "protein": 6,
-  "carbs": 23,
-  "fat": 9
-}
-
-
+    "name": "Amul Kool Café",
+    "unit": "1ml",
+    "calories": 1,
+    "protein": 0.03,
+    "carbs": 0.115,
+    "fat": 0.045
+  }
 ]
