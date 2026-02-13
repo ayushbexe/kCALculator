@@ -226,7 +226,7 @@ function downloadReceipt() {
     const doc = new jsPDF({
         orientation: "portrait",
         unit: "mm",
-        format: [80, 200]
+        format: [80, 320]
     });
 
     const now = new Date();
@@ -308,8 +308,8 @@ const chartCanvas = document.getElementById("macroChart");
 
 if (chartCanvas) {
     const chartImage = chartCanvas.toDataURL("image/png", 1.0);
-    doc.addImage(chartImage, "PNG", 10, y, 50, 50); // smaller size
-    y += 55;
+    doc.addImage(chartImage, "PNG", 20, y, 40, 40); // smaller size
+    y += 45;
 }
 
 
