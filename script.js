@@ -414,3 +414,14 @@ function getNextReceiptNumber() {
 
     return String(receiptNumber).padStart(4, "0");
 }
+
+function updateUnitLabel() {
+    const select = document.getElementById("foodSelect");
+    const unitLabel = document.getElementById("unitLabel");
+
+    const selectedFood = foods[select.value];
+
+    if (selectedFood) {
+        unitLabel.textContent = "Unit: " + selectedFood.unit;
+    }
+}
