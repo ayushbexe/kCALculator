@@ -437,6 +437,7 @@ function updateMacroBreakdown() {
             responsive: true,
             plugins: {
                 legend: {
+                    position: "bottom",
                     labels: {
                         color: "#3b2f2f"
                     }
