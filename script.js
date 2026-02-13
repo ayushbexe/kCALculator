@@ -301,6 +301,18 @@ function downloadReceipt() {
         doc.line(5, y, 75, y);
         y += 6;
 
+        // Add chart BEFORE footer
+y += 5;
+
+const chartCanvas = document.getElementById("macroChart");
+
+if (chartCanvas) {
+    const chartImage = chartCanvas.toDataURL("image/png", 1.0);
+    doc.addImage(chartImage, "PNG", 10, y, 50, 50); // smaller size
+    y += 55;
+}
+
+
         // Thank you message
         doc.setFontSize(8);
         doc.text("Thank you for tracking with kCALculator.", 40, y, { align: "center" });
@@ -323,13 +335,6 @@ function downloadReceipt() {
         const minutes = String(now.getMinutes()).padStart(2, '0');
 
         const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
-
-        const chartCanvas = document.getElementById("macroChart");
-
-if (chartCanvas) {
-    const chartImage = chartCanvas.toDataURL("image/png", 1.0);
-    doc.addImage(chartImage, "PNG", 10, y, 60, 60);
-}
 
        
         doc.save(fileName);
