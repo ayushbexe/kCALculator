@@ -1,3 +1,4 @@
+let macroChart;
 let foods = [];
 let totals = {
     calories: 0,
@@ -394,14 +395,45 @@ function updateMacroBreakdown() {
 
     if (totalMacroCalories === 0) return;
 
-   const proteinPercent = ((proteinCalories / totalMacroCalories) * 100).toFixed(1);
-const carbPercent = ((carbCalories / totalMacroCalories) * 100).toFixed(1);
-const fatPercent = ((fatCalories / totalMacroCalories) * 100).toFixed(1);
-
+    const proteinPercent = ((proteinCalories / totalMacroCalories) * 100).toFixed(1);
+    const carbPercent = ((carbCalories / totalMacroCalories) * 100).toFixed(1);
+    const fatPercent = ((fatCalories / totalMacroCalories) * 100).toFixed(1);
 
     document.getElementById("macroDisplay").textContent =
-    `Protein: ${proteinPercent}% | Carbs: ${carbPercent}% | Fat: ${fatPercent}%`;    
+        `Protein: ${proteinPercent}% | Carbs: ${carbPercent}% | Fat: ${fatPercent}%`;
+
+    const ctx = document.getElementById("macroChart").getContext("2d");
+
+    if (macroChart) {
+        macroChart.destroy();
+    }
+
+    macroChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["Protein", "Carbs", "Fat"],
+            datasets: [{
+                data: [proteinPercent, carbPercent, fatPercent],
+                backgroundColor: [
+                    "#8B4513",  // brown
+                    "#D2B48C",  // tan
+                    "#A0522D"   // darker brown
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "#3b2f2f"
+                    }
+                }
+            }
+        }
+    });
 }
+
 
 function getNextReceiptNumber() {
     let receiptNumber = localStorage.getItem("receiptNumber");
