@@ -61,7 +61,7 @@ function addSelectedFood() {
     const quantityInput = document.getElementById("quantityInput");
 
     const foodIndex = select.value;
-    const quantity = parseInt(quantityInput.value);
+    const quantity = parseFloat(quantityInput.value);
 
     if (foodIndex === "" || !quantity || quantity <= 0) {
         alert("Please select food and valid quantity");
