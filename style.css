@@ -126,7 +126,7 @@ button:hover {
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #8b5e3c, #00cc6a);
+    background: linear-gradient(90deg, #DD1C1A, #00cc6a);
     transition: width 0.3s ease;
 }
 
