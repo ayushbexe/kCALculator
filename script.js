@@ -136,19 +136,27 @@ li.innerHTML = `
 }
 
 function removeItem(index) {
-    const item = addedItems[index];
+    const list = document.getElementById("addedFoods");
+    const itemElement = list.children[index];
 
-    totals.calories -= item.calories;
-    totals.protein -= item.protein;
-    totals.carbs -= item.carbs;
-    totals.fat -= item.fat;
+    // Add animation class
+    itemElement.classList.add("removing");
 
-    addedItems.splice(index, 1);
+    setTimeout(() => {
+        const item = addedItems[index];
 
-    updateUI();
-    saveData();
+        totals.calories -= item.calories;
+        totals.protein -= item.protein;
+        totals.carbs -= item.carbs;
+        totals.fat -= item.fat;
 
+        addedItems.splice(index, 1);
+
+        updateUI();
+        saveData();
+    }, 200); // match CSS transition time
 }
+
 
 function sendToGoogleSheet() {
     fetch("https://script.google.com/macros/s/AKfycbzTUm-8G20fzNtZD87Z55_85m69mSRfMo62EjNZ_Sal_rLXA0dmGx11lNyl_S5J5Fst/exec", {
