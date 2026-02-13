@@ -159,6 +159,37 @@ function sendToGoogleSheet() {
     .catch(err => console.error("Error:", err));
 }
 
+function saveDayToSheet() {
+
+    if (totals.calories === 0) {
+        alert("No data to save.");
+        return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbzTUm-8G20fzNtZD87Z55_85m69mSRfMo62EjNZ_Sal_rLXA0dmGx11lNyl_S5J5Fst/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            calories: totals.calories,
+            protein: totals.protein,
+            carbs: totals.carbs,
+            fat: totals.fat,
+            goal: calorieGoal
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert("Day saved to Google Sheet!");
+        console.log("Sheet Updated:", data);
+    })
+    .catch(err => {
+        console.error("Sheet Error:", err);
+        alert("Error saving day.");
+    });
+}
+
 
 function downloadReceipt() {
     const receiptNo = getNextReceiptNumber();
