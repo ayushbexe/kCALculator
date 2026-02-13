@@ -180,3 +180,24 @@ button:hover {
     opacity: 0;
     transform: translateX(20px);
 }
+
+.macro-breakdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#macroChart {
+    width: 180px !important;
+    height: 180px !important;
+    margin-top: 10px;
+}
+options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+        legend: {
+            position: "bottom"
+        }
+    }
+}
