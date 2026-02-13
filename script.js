@@ -324,6 +324,13 @@ function downloadReceipt() {
 
         const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
 
+        const chartCanvas = document.getElementById("macroChart");
+
+if (chartCanvas) {
+    const chartImage = chartCanvas.toDataURL("image/png", 1.0);
+    doc.addImage(chartImage, "PNG", 10, y, 60, 60);
+}
+
        
         doc.save(fileName);
     };
