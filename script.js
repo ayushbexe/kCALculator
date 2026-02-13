@@ -296,7 +296,7 @@ function downloadReceipt() {
 
         const fileName = `${year}-${month}-${day}_${hours}-${minutes}_kCALculator_Receipt.pdf`;
 
-        sendToGoogleSheet();
+       
         doc.save(fileName);
     };
 }
