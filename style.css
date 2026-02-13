@@ -173,3 +173,10 @@ button:hover {
 .remove-btn:hover {
     transform: scale(1.2);
 }
+
+
+
+.food-item.removing {
+    opacity: 0;
+    transform: translateX(20px);
+}
