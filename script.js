@@ -166,6 +166,13 @@ function saveDayToSheet() {
         return;
     }
 
+    const today = new Date().toDateString();
+
+    if (localStorage.getItem("lastSavedDate") === today) {
+        alert("Already saved today.");
+        return;
+    }
+
     fetch("https://script.google.com/macros/s/AKfycbzTUm-8G20fzNtZD87Z55_85m69mSRfMo62EjNZ_Sal_rLXA0dmGx11lNyl_S5J5Fst/exec", {
         method: "POST",
         body: JSON.stringify({
@@ -181,6 +188,7 @@ function saveDayToSheet() {
     })
     .then(res => res.json())
     .then(data => {
+        localStorage.setItem("lastSavedDate", today);  // ✅ move here
         alert("Day saved to Google Sheet!");
         console.log("Sheet Updated:", data);
     })
