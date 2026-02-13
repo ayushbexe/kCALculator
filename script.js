@@ -423,5 +423,11 @@ function updateUnitLabel() {
 
     if (selectedFood) {
         unitLabel.textContent = "Unit: " + selectedFood.unit;
+
+        if (selectedFood.unit.includes("1g")) {
+            document.getElementById("quantityInput").placeholder = "Enter grams eaten";
+        } else {
+            document.getElementById("quantityInput").placeholder = "Enter number of units";
+        }
     }
 }
