@@ -102,5 +102,14 @@
     "protein": 0.03,
     "carbs": 0.115,
     "fat": 0.045
-  }
+  },
+  {
+  "name": "Amul Butter",
+  "unit": "1g",
+  "calories": 7.17,
+  "protein": 0.009,
+  "carbs": 0.001,
+  "fat": 0.81
+}
+
 ]
