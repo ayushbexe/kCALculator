@@ -94,6 +94,14 @@
   "protein": 1,
   "carbs": 10,
   "fat": 0
+},
+  {
+  "name": "Amul Kool Café",
+  "unit": "200ml",
+  "calories": 200,
+  "protein": 6,
+  "carbs": 23,
+  "fat": 9
 }
 
 
