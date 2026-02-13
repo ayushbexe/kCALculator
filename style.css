@@ -192,12 +192,5 @@ button:hover {
     height: 180px !important;
     margin-top: 10px;
 }
-options: {
-    responsive: true,
-    maintainAspectRatio: true,
-    plugins: {
-        legend: {
-            position: "bottom"
-        }
-    }
-}
+
+
