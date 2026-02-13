@@ -169,9 +169,11 @@ function saveDayToSheet() {
     const today = new Date().toDateString();
 
     if (localStorage.getItem("lastSavedDate") === today) {
-        alert("Already saved today.");
+    if (!confirm("Already saved today. Save again anyway?")) {
         return;
     }
+}
+
 
     fetch("https://script.google.com/macros/s/AKfycbzTUm-8G20fzNtZD87Z55_85m69mSRfMo62EjNZ_Sal_rLXA0dmGx11lNyl_S5J5Fst/exec", {
     method: "POST",
