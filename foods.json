@@ -70,5 +70,13 @@
     "protein": 12,
     "carbs": 3,
     "fat": 1
+  },
+{
+    "name": "Nescafé Choco Latte Drink",
+    "unit": "200ml",
+    "calories": 106,
+    "protein": 4,
+    "carbs": 15,
+    "fat": 3
   }
 ]
