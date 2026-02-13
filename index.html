@@ -5,7 +5,9 @@
     <title>kCALculator</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -71,6 +73,8 @@
         <div class="macro-breakdown">
     <h2>Macro Breakdown</h2>
     <p id="macroDisplay">Protein: 0% | Carbs: 0% | Fat: 0%</p>
+            <canvas id="macroChart" width="300" height="300"></canvas>
+
 </div>
         
         <button onclick="saveDayToSheet()">Close & Save Day</button>
@@ -81,7 +85,6 @@
         </div>
     </div>
 
-    <script src="jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    
 </body>
 </html>
