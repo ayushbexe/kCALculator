@@ -123,10 +123,11 @@ li.innerHTML = `
         list.appendChild(li);
     });
 
-    document.getElementById("totalCalories").textContent = totals.calories.toFixed(2);
-document.getElementById("totalProtein").textContent = totals.protein.toFixed(2);
-document.getElementById("totalCarbs").textContent = totals.carbs.toFixed(2);
-document.getElementById("totalFat").textContent = totals.fat.toFixed(2);
+    document.getElementById("totalCalories").textContent = Math.round(totals.calories);
+document.getElementById("totalProtein").textContent = totals.protein.toFixed(1);
+document.getElementById("totalCarbs").textContent = totals.carbs.toFixed(1);
+document.getElementById("totalFat").textContent = totals.fat.toFixed(1);
+
 
     updateProgress();
 
@@ -393,9 +394,10 @@ function updateMacroBreakdown() {
 
     if (totalMacroCalories === 0) return;
 
-    const proteinPercent = ((proteinCalories / totalMacroCalories) * 100).toFixed(1);
-    const carbPercent = ((carbCalories / totalMacroCalories) * 100).toFixed(1);
-    const fatPercent = ((fatCalories / totalMacroCalories) * 100).toFixed(1);
+   const proteinPercent = ((proteinCalories / totalMacroCalories) * 100).toFixed(1);
+const carbPercent = ((carbCalories / totalMacroCalories) * 100).toFixed(1);
+const fatPercent = ((fatCalories / totalMacroCalories) * 100).toFixed(1);
+
 
     document.getElementById("macroDisplay").textContent =
     `Protein: ${proteinPercent}% | Carbs: ${carbPercent}% | Fat: ${fatPercent}%`;    
