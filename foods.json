@@ -110,6 +110,16 @@
   "protein": 0.009,
   "carbs": 0.001,
   "fat": 0.81
+},
+
+  {
+  "name": "Masoor Dal",
+  "unit": "1g Cooked",
+  "calories": 1.16,
+  "protein": 0.09,
+  "carbs": 0.20,
+  "fat": 0.004
 }
+
 
 ]
